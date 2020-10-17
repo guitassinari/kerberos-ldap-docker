@@ -23,6 +23,8 @@ hostmachine $ docker-compose build
 hostmachine $ docker-compose up -d
 ```
 
+![docker compose up](https://github.com/guitassinari/kerberos-ldap-docker/blob/main/screenshots/docker-compose-up.png?raw=true)
+
 This should start both containers (client and KDC). You can verify they're running by executing:
 
 ```
@@ -30,6 +32,8 @@ hostmachine $ docker-compose ps
 ```
 
 Something like this should appear in your command line:
+
+![docker compose ps](https://github.com/guitassinari/kerberos-ldap-docker/blob/main/screenshots/docker-compose-ps.png?raw=true)
 
 > You can see the client container is not running (state = exit). This is expected! The client service is for interactive exection in the next step
 
@@ -55,9 +59,16 @@ clientbash $ kinit admin/admin@EXAMPLE.COM
 
 This should ask you for a password. The default password is `password`. Type it and hit enter.
 You can verify a ticket has been acquired by running the following command:
+
 ```
 clientbash $ klist
 ```
+
+Here's an image of this whole step:
+
+![client](https://github.com/guitassinari/kerberos-ldap-docker/blob/main/screenshots/running-client.png?raw=true)
+
+
 
 This should show the ticket you acquired.
 That's it!
