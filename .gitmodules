@@ -1,0 +1,3 @@
+[submodule "docker-krb5-server"]
+	path = docker-krb5-server
+	url = https://github.com/gcavalcante8808/docker-krb5-server
