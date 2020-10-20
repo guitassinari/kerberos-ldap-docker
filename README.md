@@ -4,20 +4,20 @@ This is a small docker-compose application for setting up a learning and testing
 
 ## How to run
 
-1. clone this repository in your local machine
+### 1. clone this repository in your local machine
 
 ```
 $ git clone git@github.com:guitassinari/kerberos-ldap-docker.git
 ```
 
-2. Step into the project folder and build it's docker images (this might take some minutes)
+### 2. Step into the project folder and build it's docker images (this might take some minutes)
 
 ```
 hostmachine $ cd kerberos-ldap-docker
 hostmachine $ docker-compose build
 ```
 
-3. Run all docker compose containers in detacched mode
+### 3. Run all docker compose containers in detacched mode
 
 ```
 hostmachine $ docker-compose up -d
@@ -37,7 +37,7 @@ Something like this should appear in your command line:
 
 > You can see the client container is not running (state = exit). This is expected! The client service is for interactive exection in the next step
 
-4. Testing the KDC server usind client
+### 4. Testing the KDC server usind client
 
 Let's try to get a ticket with KDC using our client service.
 First, run the client service with interactive bash:
