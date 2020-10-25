@@ -1,6 +1,8 @@
 version: '2'
 volumes:
   krb5kdc-data:
+  ldap-data:
+  ldap-config:
 
 services:
   kdc:
@@ -16,6 +18,29 @@ services:
       KRB5_PASS: password
     volumes:
      - krb5kdc-data:/var/lib/krb5kdc
+  ldap:
+    image: osixia/openldap
+    restart: always
+    expose:
+      - "389"
+      - "636"
+    environment:
+      KRB5_REALM: EXAMPLE.COM
+      KRB5_KDC: localhost
+      KRB5_PASS: password
+    volumes:
+      - ldap-data:/var/lib/ldap
+      - ldap-config:/etc/ldap/slapd.d
+    links:
+      - kdc
+  ldap-admin:
+    image: osixia/phpldapadmin:0.9.0
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: ldap-host
+    ports:
+      - 6443:443
+    links:
+      - ldap:ldap-host
   client:
     build: docker-krb5-client
     environment:
